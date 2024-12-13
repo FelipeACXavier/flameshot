@@ -95,6 +95,14 @@
 - DBus interface.
 - Upload to Imgur.
 - Text extraction (see [Compile-time](#compile-time)).
+  <p align="center">
+    <img src="./data/img/preview/text_detection.gif" alt="Text detection feature"/>
+  </p>
+
+  With multiple language support
+  <p align="center">
+    <img src="./data/img/preview/language_support.gif" alt="Language support feature"/>
+  </p>
 
 ## Usage
 
