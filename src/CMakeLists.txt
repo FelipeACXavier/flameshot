@@ -89,13 +89,19 @@ if(MSVC)
     endif()
 endif()
 
+if (ENABLE_OCR)
+  add_definitions(-DOCR_ENABLED=1)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(tesseract REQUIRED IMPORTED_TARGET tesseract)
+  pkg_check_modules(leptonica REQUIRED IMPORTED_TARGET lept)
+endif()
+
 add_subdirectory(cli)
 add_subdirectory(config)
 add_subdirectory(core)
 add_subdirectory(utils)
 add_subdirectory(widgets)
 add_subdirectory(tools)
-
 
 set(FLAMESHOT_TS_FILES
       ${CMAKE_SOURCE_DIR}/data/translations/Internationalization_bg.ts
@@ -215,8 +221,15 @@ target_link_libraries(
         Qt5::Widgets
         ${QTSINGLEAPPLICATION_LIBRARY}
         QtColorWidgets
-
 )
+
+if (ENABLE_OCR)
+  target_link_libraries(
+          flameshot
+          PkgConfig::leptonica
+          PkgConfig::tesseract
+  )
+endif()
 
 if (USE_WAYLAND_CLIPBOARD)
   if(!USE_WAYLAND_GRIM)

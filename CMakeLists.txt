@@ -72,6 +72,7 @@ option(DISABLE_UPDATE_CHECKER "Disable check for updates" OFF)
 if (DISABLE_UPDATE_CHECKER)
   add_compile_definitions(DISABLE_UPDATE_CHECKER)
 endif ()
+option(ENABLE_OCR "Enable OCR, requires tesseract and leptonica installed" OFF)
 
 include(cmake/StandardProjectSettings.cmake)
 
@@ -111,7 +112,7 @@ endif()
 
 option(BUILD_STATIC_LIBS ON)
 option(BUILD_SHARED_LIBS OFF)
-add_subdirectory(external/Qt-Color-Widgets EXCLUDE_FROM_ALL) 
+add_subdirectory(external/Qt-Color-Widgets EXCLUDE_FROM_ALL)
 
 
 if (APPLE)
