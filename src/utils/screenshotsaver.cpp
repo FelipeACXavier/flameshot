@@ -239,3 +239,8 @@ bool saveToFilesystemGUI(const QPixmap& capture)
 
     return okay;
 }
+
+void saveToClipboard(const QString& text)
+{
+    FlameshotDaemon::copyToClipboard(text, "Text copied to clipboard.");
+}
