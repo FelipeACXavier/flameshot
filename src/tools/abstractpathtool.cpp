@@ -104,6 +104,11 @@ void AbstractPathTool::onSizeChanged(int size)
     m_thickness = size;
 }
 
+void AbstractPathTool::onLanguageChanged(const QString& c)
+{
+  Q_UNUSED(c)
+}
+
 void AbstractPathTool::addPoint(const QPoint& point)
 {
     if (m_pathArea.left() > point.x()) {

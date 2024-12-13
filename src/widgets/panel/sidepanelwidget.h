@@ -34,6 +34,7 @@ signals:
     void togglePanel();
     void displayGridChanged(bool display);
     void gridSizeChanged(int size);
+    void languageChanged(const QString& language);
 
 public slots:
     void onToolSizeChanged(int tool);

@@ -65,6 +65,7 @@ public slots:
 signals:
     void colorChanged(const QColor& c);
     void toolSizeChanged(int size);
+    void languageChanged(const QString& language);
 
 private slots:
     void undo();

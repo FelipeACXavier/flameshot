@@ -358,6 +358,11 @@ void CaptureWidget::initButtons()
                         &CaptureWidget::handleButtonRightClick);
             }
 
+            connect(this,
+                    &CaptureWidget::languageChanged,
+                    b->tool(),
+                    &CaptureTool::onLanguageChanged);
+
             vectorButtons << b;
         }
     }
@@ -1158,6 +1163,10 @@ void CaptureWidget::initPanel()
             &SidePanelWidget::gridSizeChanged,
             this,
             &CaptureWidget::onGridSizeChanged);
+    connect(m_sidePanel,
+            &SidePanelWidget::languageChanged,
+            this,
+            &CaptureWidget::languageChanged);
     // TODO replace with a CaptureWidget signal
     emit m_sidePanel->colorChanged(m_context.color);
     emit toolSizeChanged(m_context.toolSize);

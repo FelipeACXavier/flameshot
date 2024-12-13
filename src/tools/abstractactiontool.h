@@ -26,4 +26,5 @@ public slots:
     void drawStart(const CaptureContext& context) override;
     void onColorChanged(const QColor& c) override;
     void onSizeChanged(int size) override;
+    void onLanguageChanged(const QString& c) override;
 };

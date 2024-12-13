@@ -116,6 +116,11 @@ void AbstractTwoPointTool::onSizeChanged(int size)
     m_thickness = size;
 }
 
+void AbstractTwoPointTool::onLanguageChanged(const QString& c)
+{
+  Q_UNUSED(c)
+}
+
 void AbstractTwoPointTool::paintMousePreview(QPainter& painter,
                                              const CaptureContext& context)
 {

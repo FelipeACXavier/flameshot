@@ -355,3 +355,8 @@ bool TextTool::isChanged()
 {
     return QString::compare(m_text, m_textOld, Qt::CaseInsensitive) != 0;
 }
+
+void TextTool::onLanguageChanged(const QString& c)
+{
+  Q_UNUSED(c)
+}

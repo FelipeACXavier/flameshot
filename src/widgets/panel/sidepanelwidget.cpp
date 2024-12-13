@@ -20,6 +20,11 @@
 #include <QScreen>
 #endif
 
+#ifdef OCR_ENABLED
+#include <tesseract/baseapi.h>
+#include <QComboBox>
+#endif
+
 SidePanelWidget::SidePanelWidget(QPixmap* p, QWidget* parent)
   : QWidget(parent)
   , m_layout(new QVBoxLayout(this))
@@ -92,6 +97,32 @@ SidePanelWidget::SidePanelWidget(QPixmap* p, QWidget* parent)
     gridHBoxLayout->addWidget(m_gridCheck);
     gridHBoxLayout->addWidget(m_gridSizeSpin);
     m_layout->addLayout(gridHBoxLayout);
+
+#ifdef OCR_ENABLED
+    // Language selection
+    std::vector<std::string> tesseractLanguages;
+    QComboBox* dropDownLayout = new QComboBox(this);
+
+    // The api needs to be initiated before we can get the available languages
+    auto api = std::make_unique<tesseract::TessBaseAPI>();
+    if (api->Init(NULL, "eng") == 0)
+    {
+      api->GetAvailableLanguagesAsVector(&tesseractLanguages);
+      for (const auto& l : tesseractLanguages)
+        dropDownLayout->addItem(QString(l.data()));
+    }
+    else
+    {
+      dropDownLayout->addItem("eng");
+    }
+    api->End();
+
+    connect(dropDownLayout, &QComboBox::currentTextChanged, this, [=]() {
+        emit languageChanged(dropDownLayout->currentText());
+    });
+
+    m_layout->addWidget(dropDownLayout);
+#endif
 
     // tool size sigslots
     connect(m_toolSizeSpin,

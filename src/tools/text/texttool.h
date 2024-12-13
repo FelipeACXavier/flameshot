@@ -54,6 +54,7 @@ public slots:
     void pressed(CaptureContext& context) override;
     void onColorChanged(const QColor& color) override;
     void onSizeChanged(int size) override;
+    void onLanguageChanged(const QString& language) override;
     int size() const override { return m_size; };
 
 private slots:
