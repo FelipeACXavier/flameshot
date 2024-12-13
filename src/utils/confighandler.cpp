@@ -179,6 +179,9 @@ static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
     SHORTCUT("TYPE_SIZEINCREASE"        ,                           ),
     SHORTCUT("TYPE_SIZEDECREASE"        ,                           ),
     SHORTCUT("TYPE_CIRCLECOUNT"         ,                           ),
+#ifdef OCR_ENABLED
+    SHORTCUT("TYPE_OCR"                 ,   "Ctrl+Shift+C"          ),
+#endif
 };
 // clang-format on
 

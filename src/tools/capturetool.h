@@ -48,6 +48,7 @@ public:
         TYPE_SIZEDECREASE = 21,
         TYPE_INVERT = 22,
         TYPE_ACCEPT = 23,
+        TYPE_OCR = 24,
     };
     Q_ENUM(Type);
 
@@ -198,6 +199,8 @@ public slots:
     // Called when the size the tool size is changed by the user.
     virtual void onSizeChanged(int size) = 0;
     virtual int size() const { return -1; };
+    // Called when the OCR language is changed by the user.
+    virtual void onLanguageChanged(const QString& c) = 0;
 
 private:
     unsigned int m_count;
