@@ -61,6 +61,8 @@ void OCRTool::pressed(CaptureContext& context)
         return;
 
     api->SetPageSegMode(tesseract::PageSegMode::PSM_SINGLE_BLOCK);
+    api->SetVariable("load_system_dawg", "false");
+    api->SetVariable("load_freq_dawg", "false");
 
     // Increase image and make it greyscale to help the detection
     const auto map = context.selectedScreenshotArea();
