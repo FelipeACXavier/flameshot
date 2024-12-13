@@ -94,6 +94,7 @@
 - In-app screenshot editing.
 - DBus interface.
 - Upload to Imgur.
+- Text extraction (see [Compile-time](#compile-time)).
 
 ## Usage
 
@@ -190,37 +191,38 @@ so that the screenshots save in the right directory on your desired file system.
 
 These shortcuts are available in GUI mode:
 
-|  Keys                                                                     |  Description                                                   |
-|---                                                                        |---                                                             |
-| <kbd>P</kbd>                                          | Set the Pencil as paint tool |
-| <kbd>D</kbd>                                          | Set the Line as paint tool |
-| <kbd>A</kbd>                                          | Set the Arrow as paint tool |
-| <kbd>S</kbd>                                          | Set Selection as paint tool |
-| <kbd>R</kbd>                                          | Set the Rectangle as paint tool |
-| <kbd>C</kbd>                                          | Set the Circle as paint tool |
-| <kbd>M</kbd>                                          | Set the Marker as paint tool |
-| <kbd>T</kbd>                                          | Add text to your capture |
-| <kbd>B</kbd>                                          | Set Pixelate as the paint tool |
-| <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd>                    | Move selection 1px                                             |
-| <kbd>Shift</kbd> + <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd> | Resize selection 1px                                           |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd> | Symmetrically resize selection 2px                                           |
-| <kbd>Esc</kbd>                                                            | Quit capture                                                   |
-| <kbd>Ctrl</kbd> + <kbd>M</kbd>                                            | Move the selection area                                              |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd>                                            | Copy to clipboard                                              |
-| <kbd>Ctrl</kbd> + <kbd>S</kbd>                                            | Save selection as a file                                       |
-| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                                            | Undo the last modification                                     |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>                                            | Redo the next modification                    |
-| <kbd>Ctrl</kbd> + <kbd>Q</kbd>                                            | Leave the capture screen                                         |
-| <kbd>Ctrl</kbd> + <kbd>O</kbd>                                            | Choose an app to open the capture                                |
-| <kbd>Ctrl</kbd> + <kbd>Return</kbd>                                            | Commit text in text area|
-| <kbd>Return</kbd>                                             | Upload the selection to Imgur                                      |
-| <kbd>Spacebar</kbd>                                                       | Toggle visibility of sidebar with options of the selected tool, color picker for the drawing color and history menu |
-| Right Click                                                               | Show the color wheel                                              |
-| Mouse Wheel                                                               | Change the tool's thickness                                    |
-| <kbd>Print screen</kbd>                                          | Capture Screen |
-| <kbd>Shift</kbd> + <kbd>Print</kbd>                                            | Screenshot History                                     |
-| <kbd>Ctrl</kbd> + drawing *line*, *arrow* or *marker*      | Drawing only horizontally, vertically or diagonally |
-| <kbd>Ctrl</kbd> + drawing *rectangle* or *circle*      | Keeping aspect ratio |
+|  Keys                                                  |  Description                                        |
+|---                                                     |---                                                  |
+| <kbd>P</kbd>                                           | Set the Pencil as paint tool                        |
+| <kbd>D</kbd>                                           | Set the Line as paint tool                          |
+| <kbd>A</kbd>                                           | Set the Arrow as paint tool                         |
+| <kbd>S</kbd>                                           | Set Selection as paint tool                         |
+| <kbd>R</kbd>                                           | Set the Rectangle as paint tool                     |
+| <kbd>C</kbd>                                           | Set the Circle as paint tool                        |
+| <kbd>M</kbd>                                           | Set the Marker as paint tool                        |
+| <kbd>T</kbd>                                           | Add text to your capture                            |
+| <kbd>B</kbd>                                           | Set Pixelate as the paint tool                      |
+| <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>→</kbd> | Move selection 1px                                  |
+| <kbd>Shift</kbd> + <kbd>arrows</kbd>                   | Resize selection 1px                                |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>arrows</kbd> | Symmetrically resize selection 2px                  |
+| <kbd>Esc</kbd>                                         | Quit capture                                        |
+| <kbd>Ctrl</kbd> + <kbd>M</kbd>                         | Move the selection area                             |
+| <kbd>Ctrl</kbd> + <kbd>C</kbd>                         | Copy to clipboard                                   |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>      | Copy to clipboard                                   |
+| <kbd>Ctrl</kbd> + <kbd>S</kbd>                         | Save selection as a file                            |
+| <kbd>Ctrl</kbd> + <kbd>Z</kbd>                         | Undo the last modification                          |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd>      | Redo the next modification                          |
+| <kbd>Ctrl</kbd> + <kbd>Q</kbd>                         | Leave the capture screen                            |
+| <kbd>Ctrl</kbd> + <kbd>O</kbd>                         | Choose an app to open the capture                   |
+| <kbd>Ctrl</kbd> + <kbd>Return</kbd>                    | Commit text in text area                            |
+| <kbd>Return</kbd>                                      | Upload the selection to Imgur                       |
+| <kbd>Spacebar</kbd>                                    | Toggle visibility of sidebar                        |
+| Right Click                                            | Show the color wheel                                |
+| Mouse Wheel                                            | Change the tool's thickness                         |
+| <kbd>Print screen</kbd>                                | Capture Screen                                      |
+| <kbd>Shift</kbd> + <kbd>Print</kbd>                    | Screenshot History                                  |
+| <kbd>Ctrl</kbd> + drawing *line*, *arrow* or *marker*  | Drawing only horizontally, vertically or diagonally |
+| <kbd>Ctrl</kbd> + drawing *rectangle* or *circle*      | Keeping aspect ratio                                |
 
 <kbd>Shift</kbd> + drag a handler of the selection area: mirror redimension in the opposite handler.
 
@@ -234,12 +236,12 @@ On Linux, Flameshot doesn't yet support <kbd>Prt Sc</kbd> out of the box, but wi
 
 To make configuration easier, there's a [file](docs/shortcuts-config/flameshot-shortcuts-kde.khotkeys) in the repository that more or less automates this process. This file will assign the following hotkeys by default:
 
-|  Keys                                                  |  Description                                                                       |
-|---                                                     |---                                                                                 |
-| <kbd>Prt Sc</kbd>                                      | Start the Flameshot screenshot tool and take a screenshot                          |
+|  Keys                                                  |  Description                                                              |
+|---                                                     |---                                                                        |
+| <kbd>Prt Sc</kbd>                                      | Start the Flameshot screenshot tool and take a screenshot                 |
 | <kbd>Ctrl</kbd> + <kbd>Prt Sc</kbd>                    | Wait for 3 seconds, then start the Flameshot screenshot tool and take a screenshot |
-| <kbd>Shift</kbd> + <kbd>Prt Sc</kbd>                   | Take a full-screen (all monitors) screenshot and save it                           |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Prt Sc</kbd> | Take a full-screen (all monitors) screenshot and copy it to the clipboard          |
+| <kbd>Shift</kbd> + <kbd>Prt Sc</kbd>                   | Take a full-screen (all monitors) screenshot and save it                  |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Prt Sc</kbd> | Take a full-screen (all monitors) screenshot and copy it to the clipboard |
 
 If you don't like the defaults, they can be changed later.
 
@@ -403,6 +405,15 @@ Also you can open and build/debug the project in a C++ IDE. For example, in Qt C
 - GCC >= 7.4
 - CMake >= 3.13
 
+> [!IMPORTANT]
+> If text extraction is desired, then flameshot requires:
+> - libleptonica-dev >= 1.82.
+> - tesseract-ocr >= 5.3.4
+>
+> By default, [Tesseract](https://github.com/tesseract-ocr/tesseract) only comes with support for english; extra languages can be installed separately and are automatically detected by flameshot.
+>
+> So far, this feature has only been tested in debian but it should work fine in other Linux distributions.
+
 #### Run-time
 
 - Qt
@@ -488,6 +499,16 @@ cmake -S . -B build -DQt5_DIR=$(brew --prefix qt5)/lib/cmake/Qt5
 ```
 
 When the `cmake --build build` command has completed you can launch flameshot from the `project_folder/build/src` folder.
+
+> [!IMPORTANT]
+> If text extraction is needed, the command:
+> ```shell
+> cmake -S . -B build
+> ```
+> Should be replaced by:
+> ```shell
+> cmake -S . -B build -DENABLE_OCR=ON
+> ```
 
 ### Install
 
