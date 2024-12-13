@@ -106,7 +106,7 @@ void AbstractPathTool::onSizeChanged(int size)
 
 void AbstractPathTool::onLanguageChanged(const QString& c)
 {
-  Q_UNUSED(c)
+    Q_UNUSED(c)
 }
 
 void AbstractPathTool::addPoint(const QPoint& point)

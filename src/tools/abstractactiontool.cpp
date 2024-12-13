@@ -67,5 +67,5 @@ void AbstractActionTool::onSizeChanged(int size)
 
 void AbstractActionTool::onLanguageChanged(const QString& c)
 {
-  Q_UNUSED(c)
+    Q_UNUSED(c)
 }

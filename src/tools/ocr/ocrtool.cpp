@@ -6,8 +6,8 @@
 #include "src/utils/screenshotsaver.h"
 
 #include <QBuffer>
-#include <QPainter>
 #include <QClipboard>
+#include <QPainter>
 
 #ifdef OCR_ENABLED
 #include <tesseract/baseapi.h>
@@ -64,11 +64,19 @@ void OCRTool::pressed(CaptureContext& context)
 
     // Increase image and make it greyscale to help the detection
     const auto map = context.selectedScreenshotArea();
-    const auto scaledImage = map.scaled(map.width() * PRE_SCAN_SCALE, map.height() * PRE_SCAN_SCALE, Qt::KeepAspectRatioByExpanding, Qt::FastTransformation);
-    const auto qimage = scaledImage.toImage().convertToFormat(QImage::Format_Grayscale8);
+    const auto scaledImage = map.scaled(map.width() * PRE_SCAN_SCALE,
+                                        map.height() * PRE_SCAN_SCALE,
+                                        Qt::KeepAspectRatioByExpanding,
+                                        Qt::FastTransformation);
+    const auto qimage =
+      scaledImage.toImage().convertToFormat(QImage::Format_Grayscale8);
 
     // Get OCR result and save to the clipboard
-    api->SetImage(qimage.constBits(), qimage.width(), qimage.height(), 1, qimage.bytesPerLine());
+    api->SetImage(qimage.constBits(),
+                  qimage.width(),
+                  qimage.height(),
+                  1,
+                  qimage.bytesPerLine());
     QString text = QString::fromUtf8(api->GetUTF8Text());
     saveToClipboard(text);
 
@@ -79,11 +87,11 @@ void OCRTool::pressed(CaptureContext& context)
     emit requestAction(REQ_CAPTURE_DONE_OK);
     emit requestAction(REQ_CLOSE_GUI);
 #else
-  Q_UNUSED(context)
+    Q_UNUSED(context)
 #endif
 }
 
 void OCRTool::onLanguageChanged(const QString& c)
 {
-  m_language = c;
+    m_language = c;
 }

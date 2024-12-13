@@ -358,5 +358,5 @@ bool TextTool::isChanged()
 
 void TextTool::onLanguageChanged(const QString& c)
 {
-  Q_UNUSED(c)
+    Q_UNUSED(c)
 }

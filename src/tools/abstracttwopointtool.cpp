@@ -118,7 +118,7 @@ void AbstractTwoPointTool::onSizeChanged(int size)
 
 void AbstractTwoPointTool::onLanguageChanged(const QString& c)
 {
-  Q_UNUSED(c)
+    Q_UNUSED(c)
 }
 
 void AbstractTwoPointTool::paintMousePreview(QPainter& painter,

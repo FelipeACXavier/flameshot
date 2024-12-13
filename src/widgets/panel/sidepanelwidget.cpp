@@ -21,8 +21,8 @@
 #endif
 
 #ifdef OCR_ENABLED
-#include <tesseract/baseapi.h>
 #include <QComboBox>
+#include <tesseract/baseapi.h>
 #endif
 
 SidePanelWidget::SidePanelWidget(QPixmap* p, QWidget* parent)
@@ -105,15 +105,12 @@ SidePanelWidget::SidePanelWidget(QPixmap* p, QWidget* parent)
 
     // The api needs to be initiated before we can get the available languages
     auto api = std::make_unique<tesseract::TessBaseAPI>();
-    if (api->Init(NULL, "eng") == 0)
-    {
-      api->GetAvailableLanguagesAsVector(&tesseractLanguages);
-      for (const auto& l : tesseractLanguages)
-        dropDownLayout->addItem(QString(l.data()));
-    }
-    else
-    {
-      dropDownLayout->addItem("eng");
+    if (api->Init(NULL, "eng") == 0) {
+        api->GetAvailableLanguagesAsVector(&tesseractLanguages);
+        for (const auto& l : tesseractLanguages)
+            dropDownLayout->addItem(QString(l.data()));
+    } else {
+        dropDownLayout->addItem("eng");
     }
     api->End();
 
